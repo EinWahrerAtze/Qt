@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="HalloLabel">
+          <property name="text">
+           <string>Say &quot;Hallo&quot;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="HalloTextEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="HalloSpinBox">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="HalloButton">
+          <property name="text">
+           <string>Drücken</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="HelloLabel">
+          <property name="text">
+           <string>Say &quot;Hello&quot;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="HelloTextEdit"/>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="HelloSpinBox">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="HelloButton">
+          <property name="text">
+           <string>Push</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>37</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>HelloButton</sender>
+   <signal>clicked()</signal>
+   <receiver>HelloSpinBox</receiver>
+   <slot>stepUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>82</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>28</x>
+     <y>519</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>HalloButton</sender>
+   <signal>clicked()</signal>
+   <receiver>HalloSpinBox</receiver>
+   <slot>stepUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>26</x>
+     <y>283</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>32</x>
+     <y>260</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
