@@ -5,8 +5,6 @@
 //  Created by Denis Fedorov on 14.04.2023.
 
 #include "mainwindow.h"
-#include <iostream>
-
 
 MainWindow::MainWindow(QWidget * parent) :
 	QMainWindow(parent),
@@ -22,7 +20,7 @@ MainWindow::MainWindow(QWidget * parent) :
 	this->setCentralWidget(new QWidget);
 
 	m_gboxControl = this->CreateControlBox();
-	m_gboxFormat = this->CreateColourBox();
+	m_gboxFormat = this->CreateFormatBox();
 	m_btnMain = this->CreateButton();
 	m_pbarMain = this->CreateProgressBar();
 
@@ -41,14 +39,14 @@ auto MainWindow::CreateControlBox() -> QGroupBox *
 	radio_one->setChecked(true);
 
 	QObject::connect(radio_one, &QRadioButton::clicked, this, [this]() -> void
-	{
-		this->m_bLocked = true;
-	});
+					 {
+						 this->m_bLocked = true;
+					 });
 
 	QObject::connect(radio_two, &QRadioButton::clicked, this, [this]() -> void
-	{
-		this->m_bLocked = false;
-	});
+					 {
+						 this->m_bLocked = false;
+					 });
 
 	auto vertical_layout {new QVBoxLayout};
 	vertical_layout->addWidget(radio_one);
@@ -59,7 +57,7 @@ auto MainWindow::CreateControlBox() -> QGroupBox *
 	return control_section;
 }
 
-auto MainWindow::CreateColourBox() -> QGroupBox *
+auto MainWindow::CreateFormatBox() -> QGroupBox *
 {
 	auto format_section {new QGroupBox("Progress bar format")};
 	auto formats_list {new QStringList({"Value", "Percentage"})};
@@ -67,25 +65,25 @@ auto MainWindow::CreateColourBox() -> QGroupBox *
 	formats_box->addItems(*formats_list);
 
 	QObject::connect(formats_box, &QComboBox::activated, this, [this](int n) -> void
-	{
-		switch (n)
-		{
-			case 0:
-			{
-				this->m_pbarMain->setFormat("%v");
-				break;
-			}
-			case 1:
-			{
-				this->m_pbarMain->setFormat("%p");
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	});
+					 {
+						 switch (n)
+						 {
+							 case 0:
+							 {
+								 this->m_pbarMain->setFormat("%v");
+								 break;
+							 }
+							 case 1:
+							 {
+								 this->m_pbarMain->setFormat("%p");
+								 break;
+							 }
+							 default:
+							 {
+								 break;
+							 }
+						 }
+					 });
 
 	auto vertical_layout {new QVBoxLayout};
 	vertical_layout->addWidget(formats_box);
@@ -101,19 +99,19 @@ auto MainWindow::CreateButton() -> QPushButton *
 	button->setCheckable(true);
 
 	QObject::connect(button, &QPushButton::released, this, [this]() -> void
-	{
-		if (!m_bLocked)
-		{
-			if (this->m_pbarMain->value() == 10)
-			{
-				this->m_pbarMain->setValue(0);
-			}
-			else
-			{
-				this->m_pbarMain->setValue(this->m_pbarMain->value() + 1);
-			}
-		}
-	});
+					 {
+						 if (!m_bLocked)
+						 {
+							 if (this->m_pbarMain->value() == 10)
+							 {
+								 this->m_pbarMain->setValue(0);
+							 }
+							 else
+							 {
+								 this->m_pbarMain->setValue(this->m_pbarMain->value() + 1);
+							 }
+						 }
+					 });
 
 	return button;
 }

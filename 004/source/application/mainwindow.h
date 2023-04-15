@@ -22,7 +22,7 @@ public:
 	explicit MainWindow(QWidget * parent = nullptr);
 private:
 	auto CreateControlBox() -> QGroupBox *;
-	auto CreateColourBox() -> QGroupBox *;
+	auto CreateFormatBox() -> QGroupBox *;
 	auto CreateButton() -> QPushButton *;
 	auto CreateProgressBar() -> QProgressBar *;
 

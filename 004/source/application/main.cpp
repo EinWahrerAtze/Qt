@@ -1,8 +1,8 @@
 //
 //  main.cpp
-//  QT sample project
+//  QT homework #4
 //
-//  Created by Denis Fedorov on 28.03.2023.
+//  Created by Denis Fedorov on 14.04.2023.
 
 #include <QApplication>
 #include "mainwindow.h"
@@ -10,7 +10,7 @@
 auto main(int argc, char * argv[]) -> int
 {
 	QApplication app(argc, argv);
-	auto window {new MainWindow()};
+	auto window {std::make_unique<MainWindow>()};
 	window->show();
 	return app.exec();
 }
