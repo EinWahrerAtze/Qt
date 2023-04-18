@@ -8,7 +8,7 @@
 
 auto Stopwatch::Time::Increment() -> void
 {
-	if (++milliseconds == 10)
+	if (++milliseconds == 100)
 	{
 		milliseconds = 0;
 		if (++seconds == 60)
@@ -17,7 +17,6 @@ auto Stopwatch::Time::Increment() -> void
 			++minutes;
 		}
 	}
-
 }
 
 Stopwatch::Stopwatch()

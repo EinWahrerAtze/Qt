@@ -28,7 +28,7 @@ auto MainWindow::SetupOutputSection() -> void
 	m_display_widget = new QLCDNumber();
 	m_display_widget->setDigitCount(8);
 	m_display_widget->setSegmentStyle(QLCDNumber::SegmentStyle::Flat);
-	m_display_widget->display("00:00.0");
+	m_display_widget->display("00:00.00");
 
 	m_layout->addWidget(m_display_widget, 0, 0, 1, 0);
 }
@@ -63,7 +63,7 @@ auto MainWindow::SetupButtonsSection() -> void
 							 auto [index, time] { this->m_stopwatch.GetLap() };
 							 QString minutes {time.minutes < 10 ? QChar('0') % QString::number(time.minutes) : QString::number(time.minutes)};
 							 QString seconds {time.seconds < 10 ? QChar('0') % QString::number(time.seconds) : QString::number(time.seconds)};
-							 QString milliseconds {QString::number(time.milliseconds)};
+							 QString milliseconds {time.milliseconds < 10 ? QChar('0') % QString::number(time.milliseconds) : QString::number(time.milliseconds)};
 
 							 this->m_list_widget->append("Lap: " % QString::number(index) % "\t\t" % minutes % ":" % seconds % "." % milliseconds);
 							 m_list_widget->setAlignment(Qt::AlignCenter);
@@ -94,7 +94,7 @@ auto MainWindow::Update() -> void
 	auto time {m_stopwatch.GetTime()};
 	QString minutes {time.minutes < 10 ? QChar('0') % QString::number(time.minutes) : QString::number(time.minutes)};
 	QString seconds {time.seconds < 10 ? QChar('0') % QString::number(time.seconds) : QString::number(time.seconds)};
-	QString milliseconds {QString::number(time.milliseconds)};
+	QString milliseconds {time.milliseconds < 10 ? QChar('0') % QString::number(time.milliseconds) : QString::number(time.milliseconds)};
 
 	m_display_widget->display(minutes % QChar(':') % seconds % QChar('.') % milliseconds);
 }

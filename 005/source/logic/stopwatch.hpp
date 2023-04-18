@@ -24,11 +24,11 @@ public:
 
 	Stopwatch();
 
-	auto Start(unsigned duration = 100) -> void;
+	auto Start(unsigned duration = 10) -> void;
 	auto Stop() -> void;
 	auto Reset() -> void;
 
-	auto GetTime() const->Time;
+	auto GetTime() const -> Time;
 	auto GetLap() -> QPair<qsizetype, Time>;
 
 	auto IsActive() const -> bool;
